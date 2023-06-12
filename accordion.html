@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+body{
+    background: linear-gradient(rgb(129, 129, 215) , skyblue , rgb(191, 213, 222));
+    height: 100vh;
+}
+#accordion{
+    margin: 3rem auto;
+    width: 70%;
+    padding: 1rem;
+}
+.accord{
+    margin-bottom: 0.5rem;
+}
+.accord h1{
+    background-color: peachpuff;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.accord h1 i{
+    cursor: pointer;
+}
+.accord p{
+    padding: 1rem 0.25rem;
+    border: 1px solid #e3e3e3;
+    border-top: none;
+    display: none;
+}
+
+.accord p.visible{
+    display: flex;
+    flex-direction: column;
+}
+    </style>
+    <link rel="stylesheet" href="accordion.css">
+</head>
+
+
+
+<body>
+    <div id="wrapper">
+        <div id="accordion">
+            <div class="accord">
+                <h1>Heading 1
+                    <i class="fa-solid fa-circle-minus"></i>
+                </h1>
+                <p class="visible">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum qui esse nihil. Ea fugit aperiam ipsa consequatur! Perferendis nam veritatis aspernatur dolores iure ad omnis enim modi? Possimus, iste alias?Dignissimos quidem pariatur sequi labore sit est omnis magni nihil non sint id corporis mollitia quasi tempore, explicabo, dolorem vero odio quae dolores delectus eos obcaecati, autem animi. Assumenda, magnam.</p>
+            </div>
+            <div class="accord">
+                <h1>Heading 2
+                    <i class="fa-solid fa-circle-plus"></i>
+                </h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe iste, doloribus sed corporis non consequatur voluptatibus reprehenderit totam, natus id assumenda quis quasi, harum doloremque delectus. Exercitationem ab a molestiae.Dicta suscipit id odit cum et laborum hic, illo, placeat corrupti quas quaerat libero voluptatibus eaque saepe eos, velit beatae voluptatum ipsa doloremque debitis possimus? Saepe incidunt quod molestiae dolores.</p>
+            </div>
+            <div class="accord">
+                <h1>Heading 3
+                    <i class="fa-solid fa-circle-plus"></i>
+                </h1>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quidem ad blanditiis nesciunt et maiores eum debitis exercitationem accusamus dignissimos, quae minus alias, magnam, consequuntur minima pariatur dolorem deserunt soluta.Soluta laudantium quas fuga exercitationem deserunt! Soluta, commodi nesciunt eaque, explicabo culpa omnis ab quam est adipisci inventore quidem nam, suscipit vero. Ipsa nam qui, soluta est minima vero mollitia.</p>
+            </div>
+            <div class="accord">
+                <h1>Heading 4
+                    <i class="fa-solid fa-circle-plus"></i>
+                </h1>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore error vel iusto expedita. Corporis, esse excepturi temporibus molestias inventore nemo illum, eligendi voluptas repellendus modi iure consequuntur animi, accusamus quibusdam.Aliquam quibusdam impedit optio laboriosam iusto, exercitationem assumenda ipsa aspernatur, doloribus provident architecto ipsum autem quos odit nobis consequuntur molestias tenetur minus ab delectus laborum animi deserunt! Deserunt, hic enim.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        //Traversing
+
+        // parentElement, nextElementSibling, previousElementSibling, children
+
+        //classList: contains, add, remove, toggle
+        
+
+        const accord = document.querySelectorAll("i")
+
+        for(let i = 0 ; i<accord.length ; i++){
+            accord[i].onclick = function(){
+               let para = accord[i].parentElement.nextElementSibling
+               if(para.classList.contains("visible"))
+               {
+                para.classList.remove("visible");
+
+                accord[i].classList.remove("fa-circle-minus");
+                accord[i].classList.add("fa-circle-plus");
+                
+            }
+               else
+               {
+
+                const allpara = document.querySelectorAll("p")
+                for(let i = 0 ; i<allpara.length ; i++){
+                    if(allpara[i].classList.contains("visible")){
+                        allpara[i].classList.remove("visible")
+
+                        accord[i].classList.remove("fa-circle-minus");
+                        accord[i].classList.add("fa-circle-plus");
+                    }
+                }
+
+                para.classList.add("visible");
+                
+                accord[i].classList.remove("fa-circle-plus");
+                accord[i].classList.add("fa-circle-minus");
+               }
+            }
+        }
+
+        
+    </script>
+</body>
+</html>
